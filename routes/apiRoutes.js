@@ -4,10 +4,30 @@ const router = require('express').Router();
 
 //TODO: route for saving activity data
 
-//TODO: route for getting activity data by duration
+router.post('/activities', (req, res) => {
+    const (milage, duration, date) = req.body;
+    if (!mileage) {
+        return res.json({
+            success: false,
+            message: 'Milegae is required.',
+        });
+    }
 
-//TODO: route for getting activity data by mileage
+    if (!duration) {
+        return res.json({
+            success: false,
+            message: 'Duration is required.'
+        });
+    }
+    activities.push(req.body);
+    res.json({
+        activities: activities,
+        success: true,
+    });
+    //TODO: route for getting activity data by duration
 
-router.post;
+    //TODO: route for getting activity data by mileage
 
-module.exports = router;
+    router.post;
+
+    module.exports = router;
