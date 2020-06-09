@@ -16,6 +16,71 @@
 
 <body>
 
+    <!-- As a heading -->
+    <nav class="navbar navbar-light bg-dark">
+        <span class="navbar-brand mb-0 h1">Bike Tracker</span>
+    </nav>
+    <main class="container mt-4">
+        <!--activity form-->
+
+        <section id="activity-form">
+
+            <div class="accordion" id="accordionExample">
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse"
+                                data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Track a Bike Ride
+                            </button>
+                        </h2>
+                    </div>
+
+                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                        data-parent="#accordionExample">
+                        <div class="card-body">
+                            <form>
+                                <div class="form-group">
+                                    <label for="mileage">Mileage</label>
+                                    <input type="number" class="form-control" id="mileage"
+                                        aria-describedby="milage-Help">
+                                    <small id="milage-Help" class="form-text text-muted">Enter the length of your ride
+                                        in miles, including up to 1 decimal point.</small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="duration">Duration</label>
+                                    <input type="number" class="form-control" id="duration"
+                                        aria-describedby="duration-Help">
+                                    <small id="duration-Help" class="form-text text-muted">Enter the length of your ride
+                                        in miles, including up to 1 decimal point.</small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="date">Date of Ride</label>
+                                    <input type="date" class="form-control" id="date" aria-describedby="date-Help">
+                                    <small id="date-Help" class="form-text text-muted">Choose the date of this
+                                        ride.</small>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+        </section>
+
+        <!--graph for mileage-->
+        <section id="mileage-graph">
+            <div class="jumbotron mb-5">
+                <div class id mileage-highchart></div>
+            </div>
+        </section>
+        <!-- Graph for duration-->
+        <section id="duration-form">
+
+        </section>
+
+    </main>
 
 
 
@@ -25,10 +90,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>
-    <script>
 
-
-    </script>
 </body>
 
 </html>
