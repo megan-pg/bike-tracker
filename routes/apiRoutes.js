@@ -1,33 +1,80 @@
 const router = require('express').Router();
+const moment = require('moment');
 
-//TODO: add our routes
+const activities = [];
 
-//TODO: route for saving activity data
-
+// TODO: route for saving activity data
 router.post('/activities', (req, res) => {
-    const (milage, duration, date) = req.body;
+    const { mileage, duration, date } = req.body;
+
     if (!mileage) {
-        return res.json({
+        return res.status(400).json({
             success: false,
-            message: 'Milegae is required.',
+            message: 'Mileage is required.',
         });
     }
 
     if (!duration) {
-        return res.json({
+        return res.status(400).json({
             success: false,
-            message: 'Duration is required.'
+            message: 'Duration is required.',
         });
     }
+
+    if (!date) {
+        return res.status(400).json({
+            success: false,
+            message: 'Date is required.',
+        });
+    }
+
     activities.push(req.body);
     res.json({
         activities: activities,
         success: true,
     });
-    //TODO: route for getting activity data by duration
+});
 
-    //TODO: route for getting activity data by mileage
+// TODO: route for getting activity data by duration
+router.get('/graphs/duration', (req, res) => {
+    // format the data like so:
+    /*
+    [
+      [
+        timestamp,
+        data
+      ]
+    ]
+    */
+    let formattedData = activities.map((activity) => {
+        const timestamp = moment(activity.date).format('x');
+        return [parseInt(timestamp), parseInt(activity.duration)];
+    });
+    formattedData = formattedData.sort((a, b) => {
+        return a[0] - b[0];
+    });
+    res.json(formattedData);
+});
 
-    router.post;
+// TODO: route for getting activity data by mileage
+router.get('/graphs/mileage', (req, res) => {
+    // format the data like so:
+    /*
+    [
+      [
+        timestamp,
+        data
+      ]
+    ]
+    */
+    let formattedData = activities.map((activity) => {
+        const timestamp = moment(activity.date).format('x');
+        return [parseInt(timestamp), parseInt(activity.mileage)];
+    });
+    formattedData = formattedData.sort((a, b) => {
+        return a[0] - b[0];
+    });
+    res.json(formattedData);
+});
 
-    module.exports = router;
+module.exports = router;
